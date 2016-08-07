@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="567"
-                android:id="@+id/textView"
+                android:id="@+id/lblResults"
                 android:textSize="45dp"
                 android:layout_gravity="right"
                 android:gravity="right"
@@ -70,7 +70,7 @@
             <ImageButton
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageButton"
+                android:id="@+id/btnDivide"
                 android:src="@drawable/divide"
                 android:layout_weight="1"
                 android:background="#ffffff" />
@@ -115,7 +115,7 @@
             <ImageButton
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageButton2"
+                android:id="@+id/btnMultiply"
                 android:src="@drawable/multiply"
                 android:layout_weight="1"
                 android:background="#ffffff" />
@@ -160,7 +160,7 @@
             <ImageButton
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageButton3"
+                android:id="@+id/btnSubtract"
                 android:src="@drawable/subtract"
                 android:layout_weight="1"
                 android:background="#ffffff" />
@@ -169,41 +169,39 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:weightSum="0" >
+            android:layout_height="110dp">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="204dp"
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:gravity="center">
+                android:layout_weight="2">
 
                 <Button
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Clear"
                     android:id="@+id/button10"
+                    android:layout_centerInParent="true"
                     android:textSize="25dp"
-                    android:background="#3ec6c7" />
-            </LinearLayout>
+                    android:background="#39c5c6" />
+            </RelativeLayout>
 
             <Button
-                android:layout_width="108dp"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:text="0"
                 android:id="@+id/button12"
-                android:layout_weight="0"
+                android:layout_weight="1"
                 android:background="#00ffffff"
                 android:textColor="#000000"
                 android:textSize="30dp" />
 
             <ImageButton
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageButton4"
+                android:id="@+id/btnAdd"
                 android:src="@drawable/add"
-                android:layout_weight="0"
+                android:layout_weight="1"
                 android:background="#ffffff" />
 
         </LinearLayout>
@@ -213,7 +211,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton5"
+        android:id="@+id/btnCalc"
         android:src="@drawable/equal"
         android:background="#00ffffff"
         android:layout_alignParentRight="true"
