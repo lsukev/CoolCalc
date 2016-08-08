@@ -10,6 +10,19 @@ import android.widget.TextView;
 
 public class CalcActivity extends Activity {
 
+    public enum Operation {
+        ADD, SUBTRACT, DIVIDE, MULTIPLY, EQUAL
+    }
+
+    String runningNumber = "";
+    String leftValue = "";
+    String rightValue = "";
+    Operation currentOperation;
+    int result = 0;
+
+
+    TextView lblResults;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,90 +46,93 @@ public class CalcActivity extends Activity {
         ImageButton btnCalc = (ImageButton) findViewById(R.id.btnCalc);
 
         Button btnClear = (Button) findViewById(R.id.btnClear);
-        TextView lblResults = (TextView) findViewById(R.id.lblResults);
+        lblResults = (TextView) findViewById(R.id.lblResults);
+
+
+        lblResults.setText("");
 
         btnOne.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(1);
             }
         });
         btnTwo.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(2);
             }
         });
         btnThree.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(3);
             }
         });
         btnFour.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(4);
             }
         });
         btnFive.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(5);
             }
         });
         btnSix.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(6);
             }
         });
         btnSeven.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(7);
             }
         });
         btnEight.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(8);
             }
         });
         btnNine.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(9);
             }
         });
         btnZero.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                numberPressed(0);
             }
         });
         btnAdd.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                processOperation(Operation.ADD);
             }
         });
         btnMultiply.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                processOperation(Operation.MULTIPLY);
             }
         });
 
@@ -124,30 +140,72 @@ public class CalcActivity extends Activity {
 
             @Override
             public void onClick(View v){
-
+                processOperation(Operation.DIVIDE);
             }
         });
         btnSubtract.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                processOperation(Operation.SUBTRACT);
             }
         });
         btnClear.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                runningNumber="";
+                leftValue="";
+                rightValue="";
+                result=0;
+                currentOperation=null;
+                lblResults.setText("");
             }
         });
         btnCalc.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v){
-
+                processOperation(Operation.EQUAL);
             }
         });
+    }
 
+    void processOperation(Operation operation){
+
+        if (currentOperation != null){
+            if (runningNumber != ""){
+                rightValue = runningNumber;
+                runningNumber="";
+
+                switch (currentOperation) {
+                    case ADD:
+                        result = Integer.parseInt(leftValue) + Integer.parseInt(rightValue);
+                        break;
+                    case SUBTRACT:
+                        result = Integer.parseInt(leftValue) - Integer.parseInt(rightValue);
+                        break;
+                    case MULTIPLY:
+                        result = Integer.parseInt(leftValue) * Integer.parseInt(rightValue);
+                        break;
+                    case DIVIDE:
+                        result = Integer.parseInt(leftValue) / Integer.parseInt(rightValue);
+                        break;
+                }
+                leftValue = String.valueOf(result);
+                lblResults.setText(leftValue);
+            }
+
+        } else {
+            leftValue = runningNumber;
+            runningNumber ="";
+        }
+
+        currentOperation = operation;
+    }
+
+    void numberPressed (int number){
+        runningNumber += String.valueOf(number);
+        lblResults.setText(runningNumber);
     }
 }
